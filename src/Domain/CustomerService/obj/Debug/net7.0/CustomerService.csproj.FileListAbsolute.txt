@@ -1,0 +1,12 @@
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\bin\Debug\net7.0\CustomerService.deps.json
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\bin\Debug\net7.0\CustomerService.dll
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\bin\Debug\net7.0\CustomerService.pdb
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.csproj.AssemblyReference.cache
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.AssemblyInfoInputs.cache
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.AssemblyInfo.cs
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.csproj.CoreCompileInputs.cache
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.dll
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\refint\CustomerService.dll
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\CustomerService.pdb
+C:\Users\ferna\source\repos\sim-grp\src\Domain\CustomerService\obj\Debug\net7.0\ref\CustomerService.dll
