@@ -15,14 +15,14 @@ public class RepositoryEnrollment : RepositoryBase<EEnrollment>, IRepositoryEnro
 
     public async Task<IEnumerable<EEnrollment>> DoListAsync(Expression<Func<EEnrollment, bool>>? param = null)
     {
-        if (_dbcontext.Enrollment != null)
+        if (_dbcontext.EventEnrollments != null)
         {
-            var _query = _dbcontext.Enrollment.AsQueryable();
+            var _query = _dbcontext.EventEnrollments.AsQueryable();
 
             if (param != null)
                 _query = _query
                     .Include(i => i.Customer)
-                    .Include(I => I.Schedule)
+                    .Include(I => I.Event)
                     .Where(param)
                     .AsNoTrackingWithIdentityResolution();
 
@@ -34,12 +34,12 @@ public class RepositoryEnrollment : RepositoryBase<EEnrollment>, IRepositoryEnro
 
     public async Task<EEnrollment> GetAsync(Guid id)
     {
-        if (_dbcontext.Enrollment != null)
+        if (_dbcontext.EventEnrollments != null)
         {
-            var qry = await _dbcontext.Enrollment
-                                        .Include(i => i.Customer)
-                                        .Include(i => i.Schedule)
-                                        .FirstOrDefaultAsync(s => s.Id == id);
+            var qry = await _dbcontext.EventEnrollments
+                                    .Include(i => i.Customer)
+                                    .Include(i => i.Event)
+                                    .FirstOrDefaultAsync(s => s.Id == id);
 
             if (qry != null)
                 return qry;

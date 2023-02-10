@@ -1,4 +1,4 @@
-using Sim.GRP.Domain.CustomerService.Customers.Models;
+using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Domain.CustomerService.Calendar.Models;
 
@@ -11,7 +11,7 @@ public class EEnrollment
     public DateTime EnrollDate { get; private set; }
     public DateTime LastUpdate { get; private set; }
     public ECustomer? Customer { get; private set; }
-    public ESchedule? Schedule { get; private set; }
+    public EEvent? Event { get; private set; }
     public bool Participated { get; private set; }
     public Guid UserID { get; private set; }
 }

@@ -15,9 +15,9 @@ public class RepositoryWeek : RepositoryBase<EWeek>, IRepositoryWeek, IDisposabl
 
     public async Task<IEnumerable<EWeek>> DoListAsync(Expression<Func<EWeek, bool>>? param = null)
     {
-        if (_dbcontext.Week != null)
+        if (_dbcontext.EventWeek != null)
         {
-            var _query = _dbcontext.Week.AsQueryable();
+            var _query = _dbcontext.EventWeek.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -32,9 +32,9 @@ public class RepositoryWeek : RepositoryBase<EWeek>, IRepositoryWeek, IDisposabl
 
     public async Task<EWeek> GetAsync(Guid id)
     {
-        if (_dbcontext.Week != null)
+        if (_dbcontext.EventWeek != null)
         {
-            var qry = await _dbcontext.Week
+            var qry = await _dbcontext.EventWeek
                             .FirstOrDefaultAsync(s => s.Id == id);
 
             if (qry != null)

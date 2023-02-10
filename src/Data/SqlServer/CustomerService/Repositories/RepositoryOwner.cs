@@ -15,9 +15,9 @@ public class RepositoryOwner : RepositoryBase<EOwner>, IRepositoryOwner, IDispos
 
     public async Task<IEnumerable<EOwner>> DoListAsync(Expression<Func<EOwner, bool>>? param = null)
     {
-        if (_dbcontext.Owner != null)
+        if (_dbcontext.Owners != null)
         {
-            var _query = _dbcontext.Owner.AsQueryable();
+            var _query = _dbcontext.Owners.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -32,9 +32,9 @@ public class RepositoryOwner : RepositoryBase<EOwner>, IRepositoryOwner, IDispos
 
     public async Task<EOwner> GetAsync(Guid id)
     {
-        if (_dbcontext.Owner != null)
+        if (_dbcontext.Owners != null)
         {
-            var qry = await _dbcontext.Owner
+            var qry = await _dbcontext.Owners
                             .FirstOrDefaultAsync(s => s.Id == id);
 
             if (qry != null)

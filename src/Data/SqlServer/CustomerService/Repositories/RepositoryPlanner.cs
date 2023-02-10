@@ -15,9 +15,9 @@ public class RepositoryPlanner : RepositoryBase<EPlanner>, IRepositoryPlanner, I
 
     public async Task<IEnumerable<EPlanner>> DoListAsync(Expression<Func<EPlanner, bool>>? param = null)
     {
-        if (_dbcontext.Planner != null)
+        if (_dbcontext.EventPlanners != null)
         {
-            var _query = _dbcontext.Planner.AsQueryable();
+            var _query = _dbcontext.EventPlanners.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -33,9 +33,9 @@ public class RepositoryPlanner : RepositoryBase<EPlanner>, IRepositoryPlanner, I
 
     public async Task<EPlanner> GetAsync(Guid id)
     {
-        if (_dbcontext.Planner != null)
+        if (_dbcontext.EventPlanners != null)
         {
-            var qry = await _dbcontext.Planner
+            var qry = await _dbcontext.EventPlanners
                                         .Include(i => i.Weeks)
                                         .FirstOrDefaultAsync(s => s.Id == id);
 

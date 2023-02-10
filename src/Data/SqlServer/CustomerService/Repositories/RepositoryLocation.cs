@@ -2,8 +2,8 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Sim.GRP.Data.SqlServer.CustomerService.Base;
 using Sim.GRP.Data.SqlServer.CustomerService.Context;
-using Sim.GRP.Domain.CustomerService.Customers.Interfaces;
-using Sim.GRP.Domain.CustomerService.Customers.Models;
+using Sim.GRP.Domain.CustomerService.Customer.Interfaces;
+using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 

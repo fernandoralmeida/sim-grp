@@ -15,9 +15,9 @@ public class RepositoryPartner : RepositoryBase<EPartner>, IRepositoryPartner, I
 
     public async Task<IEnumerable<EPartner>> DoListAsync(Expression<Func<EPartner, bool>>? param = null)
     {
-        if (_dbcontext.Partner != null)
+        if (_dbcontext.Partners != null)
         {
-            var _query = _dbcontext.Partner.AsQueryable();
+            var _query = _dbcontext.Partners.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -33,10 +33,10 @@ public class RepositoryPartner : RepositoryBase<EPartner>, IRepositoryPartner, I
 
     public async Task<EPartner> GetAsync(Guid id)
     {
-        if (_dbcontext.Partner != null)
+        if (_dbcontext.Partners != null)
         {
             var qry = await _dbcontext
-                            .Partner
+                            .Partners
                             .Include(i => i.Domain)
                             .FirstOrDefaultAsync(s => s.Id == id);
 

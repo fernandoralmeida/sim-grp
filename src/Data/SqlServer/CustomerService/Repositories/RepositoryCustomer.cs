@@ -2,8 +2,8 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Sim.GRP.Data.SqlServer.CustomerService.Base;
 using Sim.GRP.Data.SqlServer.CustomerService.Context;
-using Sim.GRP.Domain.CustomerService.Customers.Interfaces;
-using Sim.GRP.Domain.CustomerService.Customers.Models;
+using Sim.GRP.Domain.CustomerService.Customer.Interfaces;
+using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
@@ -15,9 +15,9 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
 
     public async Task<IEnumerable<ECustomer>> DoListAsync(Expression<Func<ECustomer, bool>>? param = null)
     {
-        if (_dbcontext.Customer!= null)
+        if (_dbcontext.Customers!= null)
         {
-            var _query = _dbcontext.Customer.AsQueryable();
+            var _query = _dbcontext.Customers.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -38,9 +38,9 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
 
     public async Task<ECustomer> GetAsync(Guid id)
     {
-        if (_dbcontext.Customer != null)
+        if (_dbcontext.Customers != null)
         {
-            var qry = await _dbcontext.Customer
+            var qry = await _dbcontext.Customers
                             .Include(i => i.Profile)
                             .Include(i => i.Business)
                             .Include(i => i.Fones)
