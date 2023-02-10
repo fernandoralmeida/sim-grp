@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Sim.GRP.Domain.CustomerService.Base;
-using Sim.GRP.Domain.CustomerService.Calls.Interfaces;
-using Sim.GRP.Domain.CustomerService.Calls.Models;
+using Sim.GRP.Domain.CustomerService.Attendance.Interfaces;
+using Sim.GRP.Domain.CustomerService.Attendance.Models;
 
 namespace Sim.GRP.Domain.CustomerService.Calls.Services;
 
