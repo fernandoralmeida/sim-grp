@@ -26,7 +26,7 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
                         .Include(i => i.Fones)
                         .Include(i => i.Emails)
                         .Include(i => i.Locations)
-                        .Include(i => i.Calls)
+                        .Include(i => i.Attendances)
                         .Where(param)
                         .AsNoTrackingWithIdentityResolution();
 
@@ -46,7 +46,7 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
                             .Include(i => i.Fones)
                             .Include(i => i.Emails)
                             .Include(i => i.Locations)
-                            .Include(i => i.Calls)
+                            .Include(i => i.Attendances)
                             .FirstOrDefaultAsync(s => s.Id == id);
 
             if (qry != null)

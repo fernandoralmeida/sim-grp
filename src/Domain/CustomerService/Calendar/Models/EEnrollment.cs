@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Domain.CustomerService.Calendar.Models;
@@ -5,6 +6,8 @@ namespace Sim.GRP.Domain.CustomerService.Calendar.Models;
 public class EEnrollment
 {
     public enum TStatus { Normal = 0, Canceled = 1 }
+
+    [Key]
     public Guid Id { get; private set; }
     public int Number { get; private set; }
     public TStatus Status { get; private set; }

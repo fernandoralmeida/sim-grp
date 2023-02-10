@@ -20,4 +20,5 @@ public class ServiceProfile : ServiceBase<EProfile>, IServiceProfile
 
     public async Task<EProfile> GetAsync(Guid id)
         => await _reps.GetAsync(id);
+
 }

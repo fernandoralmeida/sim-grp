@@ -1,6 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Sim.GRP.Domain.CustomerService.Calendar.Models;
 public class EPlanner
 {
+    [Key]
     public Guid Id { get; private set; }
     public DateTime? InitialDate { get; private set; }
     public DateTime? FinalDate { get; private set; }
