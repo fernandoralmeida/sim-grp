@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WdLKuOk56ZcQHgREduoN+oJI0DkK7mABA3tFaeYtapl1f6N5UPd5zqSqAUn/kdlQISWpwnAwHwgNIJkFAnmLdw==",
+  "dgSpecHash": "eCEc60JCdK329GLSIoHPKLJS4y4bcLR5I0inI65kIrSH+Jbrj2+NRuddo/DJFhPE5305b+fJfURhmWHTCW/H3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ferna\\source\\repos\\sim-grp\\src\\Domain\\CustomerService\\CustomerService.csproj",
+  "projectFilePath": "/home/dbn/sources/sim-grp/src/Domain/CustomerService/CustomerService.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

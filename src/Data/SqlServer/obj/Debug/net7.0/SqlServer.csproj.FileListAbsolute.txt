@@ -1,0 +1,17 @@
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/SqlServer.deps.json
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/SqlServer.runtimeconfig.json
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/SqlServer.dll
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/SqlServer.pdb
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/CustomerService.dll
+/home/dbn/sources/sim-grp/src/Data/SqlServer/bin/Debug/net7.0/CustomerService.pdb
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.csproj.AssemblyReference.cache
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.GeneratedMSBuildEditorConfig.editorconfig
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.AssemblyInfoInputs.cache
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.AssemblyInfo.cs
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.csproj.CoreCompileInputs.cache
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.csproj.CopyComplete
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.dll
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/refint/SqlServer.dll
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.pdb
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/SqlServer.genruntimeconfig.cache
+/home/dbn/sources/sim-grp/src/Data/SqlServer/obj/Debug/net7.0/ref/SqlServer.dll
