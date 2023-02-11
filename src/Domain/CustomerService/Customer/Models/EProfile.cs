@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 namespace Sim.GRP.Domain.CustomerService.Customer.Models;
 public class EProfile
 {
-
     [Key]
     public Guid Id { get; private set; }
 
