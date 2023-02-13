@@ -34,7 +34,8 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
     }
 
     public async Task<ECustomer> GetAsync(Guid id)
-        => await _dbcontext.Customers!
+    {
+        var _query = await _dbcontext!.Customers!
                             .Include(i => i.Profile)
                             .Include(i => i.Business)
                             .Include(i => i.Fones)
@@ -42,6 +43,8 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
                             .Include(i => i.Locations)
                             .Include(i => i.Attendances)
                             .FirstOrDefaultAsync(s => s.Id == id);
+        return _query!;
+    }
 
             
                 

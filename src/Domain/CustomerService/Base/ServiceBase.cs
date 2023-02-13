@@ -17,6 +17,9 @@ public class ServiceBase<Model> : IServiceBase<Model> where Model : class
     public async Task<IEnumerable<Model>> DoListSingleAsync(Expression<Func<Model, bool>>? param = null)
         => await _reps.DoListSingleAsync(param);
 
+    public async Task<Model> DoSingleAsync(Guid id)
+        => await _reps.DoSingleAsync(id);
+
     public async Task RemoveAsync(Model model)
         => await _reps.RemoveAsync(model);
 

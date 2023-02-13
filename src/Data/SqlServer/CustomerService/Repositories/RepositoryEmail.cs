@@ -9,41 +9,28 @@ namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
 public class RepositoryEmail : RepositoryBase<EEmail>, IRepositoryEmail, IDisposable
 {
-    public RepositoryEmail(CustomerServiceContext context) : base(context) {}
+    public RepositoryEmail(CustomerServiceContext context) : base(context) { }
 
-    public void Dispose()  => this.Dispose();
+    public void Dispose() => this.Dispose();
 
     public async Task<IEnumerable<EEmail>> DoListAsync(Expression<Func<EEmail, bool>>? param = null)
     {
-        if (_dbcontext.CustomerEmail != null)
-        {
-            var _query = _dbcontext.CustomerEmail.AsQueryable();
+        var _query = _dbcontext.CustomerEmail!.AsQueryable();
 
-            if (param != null)
-                _query = _query
-                    .Where(param)
-                    .AsNoTrackingWithIdentityResolution();
+        if (param != null)
+            _query = _query
+                .Where(param)
+                .AsNoTrackingWithIdentityResolution();
 
-            return await _query.ToListAsync();
-        }
-        else
-            return new List<EEmail>();
+        return await _query.ToListAsync();
     }
 
     public async Task<EEmail> GetAsync(Guid id)
     {
-        if (_dbcontext.CustomerEmail != null)
-        {
-            var qry = await _dbcontext
-                            .CustomerEmail
-                            .FirstOrDefaultAsync(s => s.Id == id);
+        var qry = await _dbcontext
+                        .CustomerEmail!
+                        .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (qry != null)
-                return qry;
-            else
-                return new EEmail();
-        }
-        else
-            return new EEmail();
+        return qry!;
     }
 }

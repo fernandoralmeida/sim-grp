@@ -31,6 +31,12 @@ public class RepositoryBase<Model> : IRepositoryBase<Model> where Model : class
         return await _query.ToListAsync();
     }
 
+    public async Task<Model> DoSingleAsync(Guid id)
+    {
+        var _query = await _dbcontext.Set<Model>().FindAsync(id);
+        return _query!;
+    }
+
     public async Task RemoveAsync(Model model)
     {
         _dbcontext.Set<Model>().Remove(model);

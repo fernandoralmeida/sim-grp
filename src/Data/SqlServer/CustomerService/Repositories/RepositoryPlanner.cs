@@ -9,42 +9,29 @@ namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
 public class RepositoryPlanner : RepositoryBase<EPlanner>, IRepositoryPlanner, IDisposable
 {
-    public RepositoryPlanner(CustomerServiceContext context) : base(context) {}
+    public RepositoryPlanner(CustomerServiceContext context) : base(context) { }
 
-    public void Dispose()  => this.Dispose();
+    public void Dispose() => this.Dispose();
 
     public async Task<IEnumerable<EPlanner>> DoListAsync(Expression<Func<EPlanner, bool>>? param = null)
     {
-        if (_dbcontext.EventPlanners != null)
-        {
-            var _query = _dbcontext.EventPlanners.AsQueryable();
+        var _query = _dbcontext.EventPlanners!.AsQueryable();
 
-            if (param != null)
-                _query = _query
-                    .Include(i => i.Weeks)
-                    .Where(param)
-                    .AsNoTrackingWithIdentityResolution();
+        if (param != null)
+            _query = _query
+                .Include(i => i.Weeks)
+                .Where(param)
+                .AsNoTrackingWithIdentityResolution();
 
-            return await _query.ToListAsync();
-        }
-        else
-            return new List<EPlanner>();
+        return await _query.ToListAsync();
     }
 
     public async Task<EPlanner> GetAsync(Guid id)
     {
-        if (_dbcontext.EventPlanners != null)
-        {
-            var qry = await _dbcontext.EventPlanners
-                                        .Include(i => i.Weeks)
-                                        .FirstOrDefaultAsync(s => s.Id == id);
+        var qry = await _dbcontext.EventPlanners!
+                                    .Include(i => i.Weeks)
+                                    .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (qry != null)
-                return qry;
-            else
-                return new EPlanner();
-        }
-        else
-            return new EPlanner();
+        return qry!;
     }
 }

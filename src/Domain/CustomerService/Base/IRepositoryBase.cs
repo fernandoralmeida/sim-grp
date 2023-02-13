@@ -8,4 +8,5 @@ public interface IRepositoryBase<Model> where Model : class
     Task UpdateAsync(Model model);
     Task RemoveAsync(Model model);
     Task<IEnumerable<Model>> DoListSingleAsync(Expression<Func<Model, bool>>? param = null);
+    Task<Model> DoSingleAsync(Guid id);
 }

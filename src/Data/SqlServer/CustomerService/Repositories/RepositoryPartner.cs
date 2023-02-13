@@ -9,15 +9,13 @@ namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
 public class RepositoryPartner : RepositoryBase<EPartner>, IRepositoryPartner, IDisposable
 {
-    public RepositoryPartner(CustomerServiceContext context) : base(context) {}
+    public RepositoryPartner(CustomerServiceContext context) : base(context) { }
 
-    public void Dispose()  => this.Dispose();
+    public void Dispose() => this.Dispose();
 
     public async Task<IEnumerable<EPartner>> DoListAsync(Expression<Func<EPartner, bool>>? param = null)
     {
-        if (_dbcontext.Partners != null)
-        {
-            var _query = _dbcontext.Partners.AsQueryable();
+            var _query = _dbcontext.Partners!.AsQueryable();
 
             if (param != null)
                 _query = _query
@@ -26,26 +24,17 @@ public class RepositoryPartner : RepositoryBase<EPartner>, IRepositoryPartner, I
                         .AsNoTrackingWithIdentityResolution();
 
             return await _query.ToListAsync();
-        }
-        else
-            return new List<EPartner>();
     }
 
     public async Task<EPartner> GetAsync(Guid id)
     {
-        if (_dbcontext.Partners != null)
-        {
-            var qry = await _dbcontext
-                            .Partners
-                            .Include(i => i.Domain)
-                            .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (qry != null)
-                return qry;
-            else
-                return new EPartner();
-        }
-        else
-            return new EPartner();
+        var qry = await _dbcontext
+                        .Partners!
+                        .Include(i => i.Domain)
+                        .FirstOrDefaultAsync(s => s.Id == id);
+
+        return qry!;
+
     }
 }

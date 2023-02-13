@@ -8,9 +8,10 @@ public class EFone
 
     [Key]
     public Guid Id { get; private set; }
-
     [StringLength(255)]
+    [Required]
     public string? Number { get; internal set; }
+    [Required]
     public TFone Description { get; internal set; }
     public EFone() { }
     public EFone(Guid id,

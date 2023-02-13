@@ -15,37 +15,24 @@ public class RepositoryChannel : RepositoryBase<EChannel>, IRepositoryChannel, I
 
     public async Task<IEnumerable<EChannel>> DoListAsync(Expression<Func<EChannel, bool>>? param = null)
     {
-        if (_dbcontext.AttendanceChannels != null)
-        {
-            var _query = _dbcontext.AttendanceChannels.AsQueryable();
+        var _query = _dbcontext.AttendanceChannels!.AsQueryable();
 
-            if (param != null)
-                _query = _query
-                    .Include(i => i.Domain)
-                    .Where(param)
-                    .AsNoTrackingWithIdentityResolution();
+        if (param != null)
+            _query = _query
+                .Include(i => i.Domain)
+                .Where(param)
+                .AsNoTrackingWithIdentityResolution();
 
-            return await _query.ToListAsync();
-        }
-        else
-            return new List<EChannel>();
+        return await _query.ToListAsync();
     }
 
     public async Task<EChannel> GetAsync(Guid id)
     {
-        if (_dbcontext.AttendanceChannels != null)
-        {
-            var qry = await _dbcontext
-                            .AttendanceChannels
-                            .Include(i => i.Domain)
-                            .FirstOrDefaultAsync(s => s.Id == id);
+        var qry = await _dbcontext
+                        .AttendanceChannels!
+                        .Include(i => i.Domain)
+                        .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (qry != null)
-                return qry;
-            else
-                return new EChannel();
-        }
-        else
-            return new EChannel();
+        return qry!;
     }
 }

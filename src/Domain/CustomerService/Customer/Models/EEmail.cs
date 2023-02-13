@@ -11,7 +11,9 @@ public class EEmail
     public Guid Id { get; private set; }
 
     [StringLength(255)]
+    [Required]
     public string? Address { get; internal set; }
+    [Required]
     public TEmail Description { get; internal set; }
     public EEmail() { }
     public EEmail(Guid id,

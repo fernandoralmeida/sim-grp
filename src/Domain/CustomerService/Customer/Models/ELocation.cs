@@ -13,7 +13,7 @@ public class ELocation {
     [StringLength(255)]
     public string? Address { get; internal set; }
 
-    [StringLength(255)]
+    [StringLength(10)]
     public string? Number { get; internal set; }
 
     [StringLength(255)]

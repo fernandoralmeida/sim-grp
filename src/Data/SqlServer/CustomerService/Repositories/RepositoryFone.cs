@@ -9,41 +9,28 @@ namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
 public class RepositoryFone : RepositoryBase<EFone>, IRepositoryFone, IDisposable
 {
-    public RepositoryFone(CustomerServiceContext context) : base(context) {}
+    public RepositoryFone(CustomerServiceContext context) : base(context) { }
 
-    public void Dispose()  => this.Dispose();
+    public void Dispose() => this.Dispose();
 
     public async Task<IEnumerable<EFone>> DoListAsync(Expression<Func<EFone, bool>>? param = null)
     {
-        if (_dbcontext.CustomerFone != null)
-        {
-            var _query = _dbcontext.CustomerFone.AsQueryable();
+        var _query = _dbcontext.CustomerFone!.AsQueryable();
 
-            if (param != null)
-                _query = _query
-                    .Where(param)
-                    .AsNoTrackingWithIdentityResolution();
+        if (param != null)
+            _query = _query
+                .Where(param)
+                .AsNoTrackingWithIdentityResolution();
 
-            return await _query.ToListAsync();
-        }
-        else
-            return new List<EFone>();
+        return await _query.ToListAsync();
     }
 
     public async Task<EFone> GetAsync(Guid id)
     {
-        if (_dbcontext.CustomerFone != null)
-        {
-            var qry = await _dbcontext
-                            .CustomerFone
-                            .FirstOrDefaultAsync(s => s.Id == id);
+        var qry = await _dbcontext
+                        .CustomerFone!
+                        .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (qry != null)
-                return qry;
-            else
-                return new EFone();
-        }
-        else
-            return new EFone();
+        return qry!;
     }
 }

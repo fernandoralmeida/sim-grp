@@ -6,54 +6,22 @@ public static class Extensions
 {
 
     public static bool Exist(this ECustomer current, ECustomer nnew)
+        => current.Document == nnew.Document ?
+        true :
+        false;
+
+    public static (bool value, string message) Validate(this ECustomer p)
     {
-        var doc1 = string.Empty;
-        var doc2 = string.Empty;
-
-        if (current != null)
-            if (current.Profile != null)
-                foreach(var item in current.Profile.Where(s => s.Key == "Document"))
-                    doc1 = item.Value;
-
-        if (nnew != null)
-            if (nnew.Profile != null)
-                foreach (var item in nnew.Profile.Where(s => s.Key == "Document"))
-                    doc2 = item.Value;
-        
-        return doc1 == doc2 ? true : false;
-    }
-
-    public static (bool, string message) Validate(this ECustomer p)
-    {
-        var doc = string.Empty;
-        var date = string.Empty;
-
-        if (p != null)
+        if (Validadte_Document(p.Document!))
         {
-            if (p.Profile != null)
-            {
-                foreach(var item in p.Profile.Where(s => s.Key == "Document"))
-                    doc = item.Value;
-
-                if (Validadte_Document(doc))
-                {
-                    foreach (var item in p.Profile.Where(s => s.Key == "Birthdate"))
-                        date = item.Value;
-                
-                    if (Convert.ToDateTime(date) > DateTime.Now.AddYears(-16) && 
-                        Convert.ToDateTime(date) < DateTime.Now.AddDays(-130))
-                        return (true, "ok");
-                    else
-                        return (false, "invalid date");
-                }
-                else
-                    return (false, "invalid");
-            }
+            if (Convert.ToDateTime(p.BirthDate) > DateTime.Now.AddYears(-16) &&
+                Convert.ToDateTime(p.BirthDate) < DateTime.Now.AddDays(-130))
+                return (true, "ok");
             else
-                return (false, "invalid");
+                return (false, "invalid date");
         }
         else
-            return (false, "invalid");
+            return (false, "invalid document");
     }
 
     private struct Document
