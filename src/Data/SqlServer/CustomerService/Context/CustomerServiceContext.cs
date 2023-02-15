@@ -24,6 +24,7 @@ public class CustomerServiceContext : DbContext
     public DbSet<EChannel>? AttendanceChannels { get; set; }
     public DbSet<EService>? AttendanceServices { get; set; }
     public DbSet<ECustomer>? Customers { get; set; }
+    public DbSet<ECompany>? Companies { get; set; }
     public DbSet<EBusiness>? CustomerBusinesses { get; set; }
     public DbSet<EEmail>? CustomerEmail { get; set; }
     public DbSet<EFone>? CustomerFone { get; set; }
@@ -33,5 +34,16 @@ public class CustomerServiceContext : DbContext
     public DbSet<EPartner>? Partners { get; set; }
 
     public static string? _connectionstring = Environment.GetEnvironmentVariable("connection_sqlserver");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new Mapping.CompanyMapping());
+        modelBuilder.ApplyConfiguration(new Mapping.CustomerMapping());
+        modelBuilder.ApplyConfiguration(new Mapping.LocationMapping());
+
+        base.OnModelCreating(modelBuilder);
+    }
+
+    
 
 }

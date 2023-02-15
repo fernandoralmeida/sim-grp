@@ -6,29 +6,29 @@ using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Domain.CustomerService.Customer.Services;
 
-public class ServiceCustomer : ServiceBase<ECustomer>, IServiceCustomer
+public class ServiceCompany : ServiceBase<ECompany>, IServiceCompany
 {
-    private readonly IRepositoryCustomer _reps;
+    private readonly IRepositoryCompany _reps;
 
-    public ServiceCustomer(IRepositoryCustomer reps)
+    public ServiceCompany(IRepositoryCompany reps)
         : base(reps)
     {
         _reps = reps;
     }
 
-    public async Task<IEnumerable<ECustomer>> DoListAsync(Expression<Func<ECustomer, bool>>? param = null)
+    public async Task<IEnumerable<ECompany>> DoListAsync(Expression<Func<ECompany, bool>>? param = null)
         => await _reps.DoListAsync(param);
 
-    public async Task<ECustomer> GetAsync(Guid id)
+    public async Task<ECompany> GetAsync(Guid id)
         => await _reps.GetAsync(id);
 
-    public override async Task AddAsync(ECustomer model)
+    public override async Task AddAsync(ECompany model)
     {
         if (model.Validate(model).status == false)
             throw new Exception($"Erro: {model.Validate(model).message}");
 
         foreach (var current in await _reps.DoListSingleAsync(s => s.Document == model.Document))
-            throw new Exception($"Erro: Customer {model.Name} Document {model.Document} Exist!");
+            throw new Exception($"Erro: Company {model.Name} Document {model.Document} Exist!");
 
         await _reps.AddAsync(model);
     }

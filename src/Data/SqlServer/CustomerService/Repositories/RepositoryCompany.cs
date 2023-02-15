@@ -7,25 +7,23 @@ using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
-public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustomer, IDisposable
+public class RepositoryCompany : RepositoryBase<ECompany>, IRepositoryCompany, IDisposable
 {
-    public RepositoryCustomers(CustomerServiceContext context) : base(context) { }
+    public RepositoryCompany(CustomerServiceContext context) : base(context) { }
 
     public void Dispose() => this.Dispose();
 
-    public async Task<IEnumerable<ECustomer>> DoListAsync(Expression<Func<ECustomer, bool>>? param = null)
+    public async Task<IEnumerable<ECompany>> DoListAsync(Expression<Func<ECompany, bool>>? param = null)
     {
 
-        var _query = _dbcontext.Customers!.AsQueryable();
+        var _query = _dbcontext.Companies!.AsQueryable();
 
         if (param != null)
             _query = _query
-                    .Include(i => i.Companies)
                     .Include(i => i.Business)
                     .Include(i => i.Fones)
                     .Include(i => i.Emails)
                     .Include(i => i.Locations)
-                    .Include(i => i.Attendances)
                     .Where(param)
                     .AsNoTrackingWithIdentityResolution();
 
@@ -33,15 +31,13 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
 
     }
 
-    public async Task<ECustomer> GetAsync(Guid id)
+    public async Task<ECompany> GetAsync(Guid id)
     {
-        var _query = await _dbcontext!.Customers!
-                            .Include(i => i.Companies)
+        var _query = await _dbcontext!.Companies!
                             .Include(i => i.Business)
                             .Include(i => i.Fones)
                             .Include(i => i.Emails)
                             .Include(i => i.Locations)
-                            .Include(i => i.Attendances)
                             .FirstOrDefaultAsync(s => s.Id == id);
         return _query!;
     }

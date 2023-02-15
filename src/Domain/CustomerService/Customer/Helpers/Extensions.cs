@@ -5,26 +5,47 @@ namespace Sim.GRP.Domain.CustomerService.Customer.Helpers;
 public static class Extensions
 {
 
+    public static bool IsNumeric(this string valor)
+    {
+        int i;
+        return int.TryParse(valor, out i);
+    }
+    public static string Mask(this string value, string mask, char substituteChar = '#')
+    {
+        int valueIndex = 0;
+        try
+        {
+            return new string(mask.Select(maskChar => maskChar == substituteChar ? value[valueIndex++] : maskChar).ToArray());
+        }
+        catch (IndexOutOfRangeException e)
+        {
+            throw new Exception("Valor muito curto para substituir todos os caracteres substitutos na máscara", e);
+        }
+    }
+
+    public static string MaskRemove(this string valor)
+    {
+        try
+        {
+            var str = valor;
+            str = new string((from c in str
+                              where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c)
+                              select c
+                   ).ToArray());
+
+            return str;
+        }
+        catch
+        {
+            return valor;
+        }
+    }
     public static bool Exist(this ECustomer current, ECustomer nnew)
         => current.Document == nnew.Document ?
         true :
         false;
 
-    public static (bool value, string message) Validate(this ECustomer p)
-    {
-        if (Validadte_Document(p.Document!))
-        {
-            if (Convert.ToDateTime(p.BirthDate) > DateTime.Now.AddYears(-16) &&
-                Convert.ToDateTime(p.BirthDate) < DateTime.Now.AddDays(-130))
-                return (true, "ok");
-            else
-                return (false, "invalid date");
-        }
-        else
-            return (false, "invalid document");
-    }
-
-    private struct Document
+    internal struct Document
     {
         private readonly string _value;
         public readonly bool _isvalid;
@@ -115,5 +136,28 @@ public static class Extensions
         public override string ToString() => _value;
     }
 
-    private static bool Validadte_Document(Document value) => value._isvalid;
+    internal static bool Validadte_Document(Document value) => value._isvalid;
+
+    public static bool ValidateDocument(string document)
+    {
+        if (document.Length != 14)
+            return false;
+
+        int[] pesos1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] pesos2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+        int soma = 0;
+        for (int i = 0; i < 12; i++)
+            soma += int.Parse(document[i].ToString()) * pesos1[i];
+        int resto = soma % 11;
+        int digito1 = resto < 2 ? 0 : 11 - resto;
+
+        soma = 0;
+        for (int i = 0; i < 13; i++)
+            soma += int.Parse(document[i].ToString()) * pesos2[i];
+        resto = soma % 11;
+        int digito2 = resto < 2 ? 0 : 11 - resto;
+
+        return document.EndsWith(digito1.ToString() + digito2.ToString());
+    }
 }
