@@ -13,13 +13,5 @@ public class CustomerMapping : IEntityTypeConfiguration<ECustomer>
         builder.Property(c => c.Document)
             .HasColumnType("varchar(11)")
             .IsRequired();
-        builder.Property(c => c.Name)
-            .IsRequired()
-            .HasColumnType("varchar(255)")
-            .UseCollation("Latin1_General_CI_AI");
-        builder.Property(c => c.SocialName)
-            .IsRequired()
-            .HasColumnType("varchar(255)")
-            .UseCollation("Latin1_General_CI_AI");
     }
 }

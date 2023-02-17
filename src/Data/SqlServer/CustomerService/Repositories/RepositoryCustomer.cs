@@ -20,7 +20,7 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
 
         if (param != null)
             _query = _query
-                    .Include(i => i.Companies)
+                    .Include(i => i.Bonds)
                     .Include(i => i.Business)
                     .Include(i => i.Fones)
                     .Include(i => i.Emails)
@@ -36,7 +36,7 @@ public class RepositoryCustomers : RepositoryBase<ECustomer>, IRepositoryCustome
     public async Task<ECustomer> GetAsync(Guid id)
     {
         var _query = await _dbcontext!.Customers!
-                            .Include(i => i.Companies)
+                            .Include(i => i.Bonds)
                             .Include(i => i.Business)
                             .Include(i => i.Fones)
                             .Include(i => i.Emails)

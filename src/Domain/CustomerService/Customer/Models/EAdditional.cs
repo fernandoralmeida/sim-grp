@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Sim.GRP.Domain.CustomerService.Customer.Models;
-public class EProfile
+public class EAdditional
 {
     [Key]
     public Guid Id { get; private set; }

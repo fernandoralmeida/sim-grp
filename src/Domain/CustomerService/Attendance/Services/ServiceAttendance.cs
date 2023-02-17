@@ -20,4 +20,10 @@ public class ServiceAttendance : ServiceBase<EAttendance>, IServiceAttendance
 
     public async Task<EAttendance> GetAsync(Guid id)
         => await _reps.GetAsync(id);
+
+    public override Task AddAsync(EAttendance model)
+    {
+        
+        return base.AddAsync(model);
+    }
 }

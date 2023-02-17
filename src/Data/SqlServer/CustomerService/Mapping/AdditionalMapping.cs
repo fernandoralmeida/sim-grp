@@ -4,20 +4,16 @@ using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Data.SqlServer.CustomerService.Mapping;
 
-public class CompanyMapping : IEntityTypeConfiguration<ECompany>
+public class AdditionalsMapping : IEntityTypeConfiguration<EAdditional>
 {
-    public void Configure(EntityTypeBuilder<ECompany> builder)
+    public void Configure(EntityTypeBuilder<EAdditional> builder)
     {
         builder.HasKey(s => s.Id);
-        builder.HasIndex(c => c.Document).IsUnique();
-        builder.Property(c => c.Document)
-            .HasColumnType("varchar(14)")
-            .IsRequired();
-        builder.Property(c => c.Name)
+        builder.Property(c => c.Key)
             .IsRequired()
             .HasColumnType("varchar(255)")
             .UseCollation("Latin1_General_CI_AI");
-        builder.Property(c => c.CommercialName)
+        builder.Property(c => c.Value)
             .IsRequired()
             .HasColumnType("varchar(255)")
             .UseCollation("Latin1_General_CI_AI");

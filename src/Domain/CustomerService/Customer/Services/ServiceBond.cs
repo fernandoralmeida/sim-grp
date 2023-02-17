@@ -5,20 +5,20 @@ using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Domain.CustomerService.Customer.Services;
 
-public class ServiceProfile : ServiceBase<EProfile>, IServiceProfile
+public class ServiceBond : ServiceBase<EBonds>, IServiceBond
 {
-    private readonly IRepositoryProfile _reps;
+    private readonly IRepositoryBond _reps;
     
-    public ServiceProfile(IRepositoryProfile reps)
+    public ServiceBond(IRepositoryBond reps)
         : base(reps)
     {
         _reps = reps;
     }
 
-    public async Task<IEnumerable<EProfile>> DoListAsync(Expression<Func<EProfile, bool>>? param = null)
+    public async Task<IEnumerable<EBonds>> DoListAsync(Expression<Func<EBonds, bool>>? param = null)
         => await _reps.DoListAsync(param);
 
-    public async Task<EProfile> GetAsync(Guid id)
+    public async Task<EBonds> GetAsync(Guid id)
         => await _reps.GetAsync(id);
 
 }

@@ -28,7 +28,7 @@ public class ServiceCustomer : ServiceBase<ECustomer>, IServiceCustomer
             throw new Exception($"Erro: {model.Validate(model).message}");
 
         foreach (var current in await _reps.DoListSingleAsync(s => s.Document == model.Document))
-            throw new Exception($"Erro: Customer {model.Name} Document {model.Document} Exist!");
+            throw new Exception($"Erro: Customer Document {model.Document} Exist!");
 
         await _reps.AddAsync(model);
     }

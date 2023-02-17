@@ -7,15 +7,15 @@ using Sim.GRP.Domain.CustomerService.Customer.Models;
 
 namespace Sim.GRP.Data.SqlServer.CustomerService.Repositories;
 
-public class RepositoryProfile : RepositoryBase<EProfile>, IRepositoryProfile, IDisposable
+public class RepositoryAdditional : RepositoryBase<EAdditional>, IRepositoryAdditional, IDisposable
 {
-    public RepositoryProfile(CustomerServiceContext context) : base(context) { }
+    public RepositoryAdditional(CustomerServiceContext context) : base(context) { }
 
     public void Dispose() => this.Dispose();
 
-    public async Task<IEnumerable<EProfile>> DoListAsync(Expression<Func<EProfile, bool>>? param = null)
+    public async Task<IEnumerable<EAdditional>> DoListAsync(Expression<Func<EAdditional, bool>>? param = null)
     {
-        var _query = _dbcontext.CustomerProfile!.AsQueryable();
+        var _query = _dbcontext.CustomerAdditionals!.AsQueryable();
 
         if (param != null)
             _query = _query
@@ -25,10 +25,10 @@ public class RepositoryProfile : RepositoryBase<EProfile>, IRepositoryProfile, I
         return await _query.ToListAsync();
     }
 
-    public async Task<EProfile> GetAsync(Guid id)
+    public async Task<EAdditional> GetAsync(Guid id)
     {
         var qry = await _dbcontext
-                        .CustomerProfile!
+                        .CustomerAdditionals!
                         .FirstOrDefaultAsync(s => s.Id == id);
 
         return qry!;

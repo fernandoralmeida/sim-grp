@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 
 namespace Sim.GRP.Domain.CustomerService.Customer.Interfaces;
 
-public interface IRepositoryCompany : IRepositoryBase<ECompany>
+public interface IRepositoryBond : IRepositoryBase<EBonds>
 {
-    Task<ECompany> GetAsync(Guid id);
-    Task<IEnumerable<ECompany>> DoListAsync(Expression<Func<ECompany, bool>>? param = null);
+    Task<EBonds> GetAsync(Guid id);
+    Task<IEnumerable<EBonds>> DoListAsync(Expression<Func<EBonds, bool>>? param = null);
 }

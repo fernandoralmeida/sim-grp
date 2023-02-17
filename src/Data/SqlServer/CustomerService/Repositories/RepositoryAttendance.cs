@@ -20,7 +20,6 @@ public class RepositoryAttendance : RepositoryBase<EAttendance>, IRepositoryAtte
         if (param != null)
             _query = _query
                 .Include(i => i.Customer)
-                .Include(i => i.Company)
                 .Include(i => i.Domain)
                 .Include(i => i.Channel)
                 .Include(i => i.Services)
@@ -35,7 +34,6 @@ public class RepositoryAttendance : RepositoryBase<EAttendance>, IRepositoryAtte
         var qry = await _dbcontext
                         .Attendances!
                         .Include(i => i.Customer)
-                        .Include(i => i.Company)
                         .Include(i => i.Domain)
                         .Include(i => i.Channel)
                         .Include(i => i.Services)

@@ -20,4 +20,6 @@ public class ServiceService : ServiceBase<EService>, IServiceService
 
     public async Task<EService> GetAsync(Guid id)
         => await _reps.GetAsync(id);
+
+    
 }
