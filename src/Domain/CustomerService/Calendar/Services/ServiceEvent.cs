@@ -19,4 +19,5 @@ public class ServiceEvent : ServiceBase<EEvent>, IServiceEvent
 
     public async Task<EEvent> GetAsync(Guid id)
         => await _reps.GetAsync(id);
+
 }

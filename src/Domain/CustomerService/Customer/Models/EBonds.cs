@@ -7,6 +7,7 @@ public class EBonds
     [Key]
     public Guid Id { get; private set; }
     public ECustomer? Customer { get; private set; }
+    [StringLength(255)]
     public string? Bond { get; private set; }
 
 }

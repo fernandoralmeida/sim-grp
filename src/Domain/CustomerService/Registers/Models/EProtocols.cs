@@ -1,9 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Sim.GRP.Domain.CustomerService.Registers.Models;
 
 public class EProtocols
 {
+    [Key]
     public Guid Id { get; private set; }
+    [Required][StringLength(255)]
     public string? Protocol { get; private set; }
+    [Required][StringLength(255)]
     public string? Description { get; private set; }
     public DateTime RegistrationDate { get; private set; }
     public Guid UserID { get; private set; }
@@ -17,6 +22,6 @@ public class EProtocols
         RegistrationDate = registrationdate;
         UserID = userid;
     }
-    public string New() 
-        => $"{DateTime.Now.Year}-{DateTime.Now.DayOfYear.ToString("000")}-{DateTime.Now.TimeOfDay.TotalDays}";
+    internal string New() 
+        => $"{DateTime.Now:yyyy}-{DateTime.Now.DayOfYear:000}-{DateTime.Now:HHmmss.ff}";
 }

@@ -20,4 +20,15 @@ public class ServiceEnrollment : ServiceBase<EEnrollment>, IServiceEnrollment
 
     public async Task<EEnrollment> GetAsync(Guid id)
         => await _reps.GetAsync(id);
+
+    public override async Task AddAsync(EEnrollment model)
+    {
+        var _list = await _reps.DoListAsync(s => s.Event!.Code == model.Event!.Code);
+        var _alreadysubscribed = model.AlreadySubscribed(model, _list);
+        if (_alreadysubscribed.value == false)
+            await _reps.AddAsync(model);
+        else
+            throw new Exception($"Erro: {this} : {_alreadysubscribed.message}");
+
+    }
 }

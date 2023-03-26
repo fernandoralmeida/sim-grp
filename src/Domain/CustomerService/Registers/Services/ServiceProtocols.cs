@@ -23,16 +23,19 @@ public class ServiceProtocols : ServiceBase<EProtocols>, IServiceProtocols
 
     public override async Task AddAsync(EProtocols model)
     {
-        while(await Validate(model) == true)        
+        do
+        {
             await _reps.AddAsync(model);
+        }
+        while (await Validate(model.New()) == true);
     }
 
-    private async Task<bool> Validate(EProtocols model)
+    private async Task<bool> Validate(string protocol)
     {
-        foreach (var items in await _reps.DoListSingleAsync(s => s.Protocol == model.Protocol))
-            if (items.Protocol == model.Protocol)
+        foreach (var items in await _reps.DoListSingleAsync(s => s.Protocol == protocol))
+            if (items.Protocol == protocol)
                 return false;
-        
+
         return true;
     }
 }

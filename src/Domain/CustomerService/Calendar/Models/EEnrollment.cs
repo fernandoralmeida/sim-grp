@@ -34,13 +34,13 @@ public class EEnrollment
         Participated = participated;
         UserID = userid;
     }
-    public bool EnrollExist(EEnrollment enroll, ICollection<EEnrollment> enrollments)
+    public (bool value, string message) AlreadySubscribed(EEnrollment enroll, IEnumerable<EEnrollment> enrolled)
     {
         foreach(var e in enroll.Customer!)
-            foreach(var enrolls in enrollments)
+            foreach(var enrolls in enrolled)
                 foreach(var exist in enrolls.Customer!.Where(s => s.Document == e.Document))
-                    return true;
+                    return (true, $"{e.Document} Already Subscribed!");
                     
-        return false;        
+        return (false, $"Ready!");        
     }
 }

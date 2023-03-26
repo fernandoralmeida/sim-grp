@@ -41,7 +41,7 @@ public class EAttendance
             true :
             false;
 
-    public bool ExistAttendanceActiv(EAttendance obj)
+    public bool HasActiveAttendance(EAttendance obj)
         => obj.Status == TStatus.Active ?
             true :
             false;

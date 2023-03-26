@@ -21,7 +21,7 @@ public class RepositoryEvent : RepositoryBase<EEvent>, IRepositoryEvent, IDispos
             _query = _query
                 .Include(i => i.Manager)
                 .Include(i => i.Partner)
-                .Include(i => i.Subscribers)
+                .Include(i => i.Enrolled)
                 .Where(param)
                 .AsNoTrackingWithIdentityResolution();
 
@@ -34,7 +34,7 @@ public class RepositoryEvent : RepositoryBase<EEvent>, IRepositoryEvent, IDispos
                         .Events!
                         .Include(i => i.Manager)
                         .Include(i => i.Partner)
-                        .Include(i => i.Subscribers)
+                        .Include(i => i.Enrolled)
                         .FirstOrDefaultAsync(s => s.Id == id);
 
         return qry!;

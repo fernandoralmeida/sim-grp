@@ -17,4 +17,13 @@ public class EOwner
     public EHierarchy? Hierachy { get; private set; }
     public Guid? Domain { get; private set; } //
     public bool Active { get; set; }
+    public EOwner(){}
+    public EOwner(Guid id, string name, EHierarchy hierarchy, Guid domain, bool active)
+    {
+        Id = id;
+        Name = name;
+        Hierachy = hierarchy;
+        Domain = domain;
+        Active = active;
+    }
 }
